@@ -16,9 +16,9 @@
 	<?php
 	  if (isset($_SESSION['idP']))
 	  {
-		  echo "<p class='ali'><a href='index.php?page=10' class='deco'>déconnexion</a></p>";
+		  echo "<p class='ali'><a href='index.php?page=10' class='deco'>Déconnexion</a></p>";
 	  }else{
-		  echo "<p class='ali'><a href='index.php?con=1' class='deco'>connexion</a></p>";
+		  echo "<p class='ali'><a href='index.php?con=1' class='deco'>Connexion</a></p>";
 	  }
   ?>
 		
@@ -30,7 +30,7 @@
       </div>
     </div>
 	
-<table height=100%>
+<table min-height=50%>
 <tr>
 	<td style="vertical-align:top;">
 	<?php
@@ -69,7 +69,11 @@
 			break;
 			
 			case 5 :
-				echo "qui somme nous";
+				echo "qui sommes nous";
+			break;
+			
+			case 6 :
+				echo "Page d'inscription";
 			break;
 		}
 	}
@@ -86,7 +90,7 @@
 	{
 		
 		//page d'accueil
-		echo "</br></br><strong>Bienvenue sur le site Solidarite Autonome<strong><br><br>";
+		echo "</br></br><strong>Bienvenue sur le site Solidarite Autonome</strong><br><br>";
 		echo "explication";
 		
 	}
@@ -160,6 +164,11 @@
 		</center>
 	</td>
 </tr>
+</table>
+
+<footer>
+	<p style="text-align:center; color:white;" >Designed by Kévin, Audran, Alexandre, Tanguy, Alexy, Francis, William, Gabriel</p>
+</footer>
 	
   </body>
 </html>

@@ -31,4 +31,4 @@
 
 </table>
 </form>
-<a href="inscription.php"> Inscrivez-vous ici </a>
+<a href="index.php?con=6"> Inscrivez-vous ici </a>
