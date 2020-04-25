@@ -39,12 +39,14 @@ foreign key(idR) references region(idR)
 );
 create table personne
 (
-idP int not null,
+idP int auto_increment,
 nom varchar(20),
 prenom varchar(20),
+pseudo varchar(20),
+mdp varchar(20),
 adresse varchar(40),
 cp char(5),
-tel char(5),
+tel char(10),
 idR int,
 primary key(idP),
 foreign key(idR) references region(idR)
@@ -107,7 +109,7 @@ responsable(idResp,nom,prenom,adresse,cp,tel)
 region(idR,libelle,coordonnees)
 produit(idProd,libelle)
 Stock(idS,libelle,adresse,cp,tel,#idR)
-personne(idP,nom,prenom,adresse,cp,tel,#idR)
+personne(idP,nom,prenom,pseudo,mdp,adresse,cp,tel,#idR)
 commande(idC,#idP)
 donation(idDon,#idP)
 Stockage(#idS,#idProd,nbDispo)
@@ -117,3 +119,7 @@ don(#idProd,#idDon,nbDonne)
 
 
 */
+
+
+
+insert into personne values (null, "unNom", "unPrenom", "unPseudo","123","une adresse","93000","0102030405",1);
