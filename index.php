@@ -8,7 +8,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Solidarité Autonome</title>
+    <title>Bénévolat - Solidarité Autonome</title>
 	<link rel="stylesheet" type="text/css" href="style/style.css">
     
   </head> 
