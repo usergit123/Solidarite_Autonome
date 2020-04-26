@@ -151,7 +151,20 @@ insert into stock values
 (2, "slendide stock", "la flemme","93600", "0102030405", 1,1);
 
 
-
 insert into personne values (null, "unNom", "unPrenom", "unPseudo","123","une adresse","93000","0102030405",1),
  (null, "Audran", "Puech", "Maman","123","4 rue des tapirs","93001","0102030409",1);
+
+
+insert into responsable values (1,"unNomResp","unPrenomResp","une adresse", "81000", "0102030405");
+
+
+insert into responsable values (4,"Papa","Kiki","4 rue pagol","45000","0123565478"),
+    (2,"Lionel","juki","10 avenue de la gaulle","12000","0965847852"),
+    (3,"Vorge","Huj","7 boulevard de la clemence","36500","0679621910");
+	
+insert into stockage values (1,1,25), 
+    (2,2,500),
+    (3,3,1000),
+    (4,4,180);
+
 
