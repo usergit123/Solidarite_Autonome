@@ -57,5 +57,10 @@
             $this->insertDemande($IdProd, $Idc, $Nbdemande);
         }
 		
+		public function selectBesoins ()
+		{
+			return $this->unModele->selectBesoins();
+		}
+		
     }
 ?>
