@@ -13,6 +13,7 @@
     
   </head> 
   <body bgcolor=#EFF2FB>
+  <div id="main">
 	<?php
 	  if (isset($_SESSION['idP']))
 	  {
@@ -169,6 +170,6 @@
 <footer>
 	<p style="text-align:center; color:white;" >Designed by Kévin, Audran, Alexandre, Tanguy, Alexy, Francis, William, Gabriel</p>
 </footer>
-	
+	</div>
   </body>
 </html>

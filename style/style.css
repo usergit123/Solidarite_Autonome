@@ -111,15 +111,22 @@ label
 footer{
 
 background:#58ACFA;
-
 position:absolute;
-
 bottom:0;
-
 width:100%;
-
 padding-top:50px;
-
 height:50px;
+}
+
+body, html{height:100%;}
+
+
+#main{
+
+min-height:100%;
+
+margin:0 auto;
+
+position:relative;
 
 }
