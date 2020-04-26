@@ -127,10 +127,17 @@
 				{
 					case 1 :
 						echo "Page stock";
+						//appel de la fonction select*from objets
+						$lesLignes = $unControleur->selectALLStock();
+						//var_dump($lesLignes);
+						include("vue/vue_lister_stock.php");
+						break;
+		
 					break;
 					
 					case 2:
-						echo "Page Régions";
+						echo "Page Commandes";
+						include ("vue/formulaire_sante.php");
 					break;
 					
 					case 3:

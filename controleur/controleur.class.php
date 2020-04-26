@@ -48,6 +48,14 @@
 
             return $objet;
         }
+        public  function selectALLStock()
+        {
+            return $this->unModele->selectALLStock();
+        }
+        public function insertDemande ($IdProd, $Idc, $Nbdemande)
+        {
+            $this->insertDemande($IdProd, $Idc, $Nbdemande);
+        }
 		
     }
 ?>

@@ -101,6 +101,45 @@
 			}
 		}
 
+		public function insertDemande ($IdProd, $IdC, $NbDemande)
+		{
+			if ($this->pdo != null)
+			{
+				$requete="insert into Demande values (".$IdProd.", ".$IdC.", ".$NbDemande.");";
+    		
+				//preparation de la requete
+				$select = $this->pdo->prepare ($requete);
+				//execution de la requete
+				$select->execute ();
+				//extraction des enregistrements
+				return $select->fetchALL();
+			}
+			else
+			{
+				return null;
+			}
+			}
+		public function selectALLStock()
+		{
+			if ($this->pdo !=null)
+			{
+				$requete="select Re.Libelle Region, R.Nom Nom ,R.Prenom Prenom, R.Tel Telephone, S.Libelle Nom_Stock, P.Libelle Produit,St.NbDispo NbStock
+			    from Produit P, Stockage St, Stock S, Region Re, Responsable R
+			    Where P.IdProd = St.IdProd and St.Ids=S.IDs and R.Idresp = S.IdResp and S.IdR= Re.Idr;";
+    		
+				//preparation de la requete
+				$select = $this->pdo->prepare ($requete);
+				//execution de la requete
+				$select->execute ();
+				//extraction des enregistrements
+				return $select->fetchALL();
+			}
+			else
+			{
+				return null;
+			}
+		}
+
 		public function insert ($tab)
 		{
 			if ($this->pdo !=null) //appel de la fonction connexion
@@ -148,6 +187,7 @@
 				//var_dump($donnees);
 			}
 		}
+		
 		
 		public function delete($tabId)
 		{
