@@ -124,6 +124,7 @@ don(#idProd,#idDon,nbDonne)
 
 */
 
+
 /*
 insert into produit values (1, "masque"),(1, "gant");
 insert into demande values (1,1,5),(1,2,6);
@@ -140,6 +141,7 @@ insert into commande values (1, 1),(2,1), (3,1), (4,1), (5,2),(6,2);
 insert into produit values (1,"Masque de protection"), (2, "Gants de protection"), (3, "Gel hydro-alcoolique"), (4, "Combinaison de securite");
 insert into demande values (1,1,3),(2,2,5),(3,3,7), (4,4,8), (1,5,9), (2, 6, 10), (3,5, 11), (4,6,12);
 insert into region values (1, "Aquitaine", 34, 32 ), (2, "Ile-de-france", 23, 67), (3, "Limousin", 87,90);
+
 insert into personne values 
 (null, "unNom", "unPrenom", "unPseudo","123","une adresse","93000","0102030405",1),
 (null, "Audran", "Puech", "Maman","123","4 rue des tapirs","93001","0102030409",1);
@@ -148,4 +150,8 @@ insert into stock values
 (1, "magnifique stock", "perpete","92600", "0102030405", 1, 1),
 (2, "slendide stock", "la flemme","93600", "0102030405", 1,1);
 
+
+
+insert into personne values (null, "unNom", "unPrenom", "unPseudo","123","une adresse","93000","0102030405",1),
+ (null, "Audran", "Puech", "Maman","123","4 rue des tapirs","93001","0102030409",1);
 

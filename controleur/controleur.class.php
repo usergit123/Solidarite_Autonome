@@ -42,6 +42,12 @@
 		{
 			return $this->unModele->selectUser($pseudo,$mdp);
 		}
+        public function selectALLBesoins ()
+        {
+            $objet = $this->unModele->selectALLBesoins ();
+
+            return $objet;
+        }
 		
 		public function selectBesoins ()
 		{
