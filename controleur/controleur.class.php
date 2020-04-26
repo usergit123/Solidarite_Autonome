@@ -43,5 +43,10 @@
 			return $this->unModele->selectUser($pseudo,$mdp);
 		}
 		
+		public function selectBesoins ()
+		{
+			return $this->unModele->selectBesoins();
+		}
+		
     }
 ?>
