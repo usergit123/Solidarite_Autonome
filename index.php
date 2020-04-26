@@ -57,11 +57,17 @@
 			break;
 			
 			case 2 :
-				echo "page de consultation des besoins";
-			break;
+			//appel de la fonction select*from objets
+						$lesLignes = $unControleur->selectALLBesoins();
+						//var_dump($lesLignes);
+						include("vue/vue_lister_besoins.php");
+						break;
+		
+		
+			
 			
 			case 3 :
-				echo "mention légale";
+				echo "Mentions légales";
 			break;
 			
 			case 4 :
@@ -69,7 +75,7 @@
 			break;
 			
 			case 5 :
-				echo "qui sommes nous";
+				echo "Qui sommes-nous ?";
 			break;
 			
 			case 6 :
@@ -166,9 +172,7 @@
 </tr>
 </table>
 
-<footer>
-	<p style="text-align:center; color:white;" >Designed by Kévin, Audran, Alexandre, Tanguy, Alexy, Francis, William, Gabriel</p>
-</footer>
+
 	
   </body>
 </html>

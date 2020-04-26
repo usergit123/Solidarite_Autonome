@@ -80,6 +80,27 @@
 			
 			
 		}
+
+		public function selectALLBesoins()
+		{
+			if ($this->pdo !=null)
+			{
+				$requete="select r.libelle Region, p.nom Nom, p.prenom Prenom, p.tel Telephone, c.idC Identifiant_Commande, prod.libelle Produit from personne p, commande c, region r, produit prod, demande d
+    where c.idP=p.idp and r.idr=p.idr and prod.idprod=d.idprod and d.idc=c.idc;";
+    		
+				//preparation de la requete
+				$select = $this->pdo->prepare ($requete);
+				//execution de la requete
+				$select->execute ();
+				//extraction des enregistrements
+				return $select->fetchALL();
+			}
+			else
+			{
+				return null;
+			}
+		}
+
 		public function insert ($tab)
 		{
 			if ($this->pdo !=null) //appel de la fonction connexion
