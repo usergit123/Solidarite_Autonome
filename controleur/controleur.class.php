@@ -52,9 +52,18 @@
         {
             return $this->unModele->selectALLStock();
         }
+		
+		
+		
+		
         public function insertDemande ($IdProd, $Idc, $Nbdemande)
         {
-            $this->insertDemande($IdProd, $Idc, $Nbdemande);
+            $this->unModele->insertDemande($IdProd, $Idc, $Nbdemande);
+        }
+		
+		public function insertDonne ($IdProd, $IdDon, $Nbdon)
+        {
+            $this->unModele->insertDonne($IdProd, $IdDon, $Nbdon);
         }
 		
 		public function selectBesoins ()
@@ -62,5 +71,29 @@
 			return $this->unModele->selectBesoins();
 		}
 		
+		public function selectMaxIdC()
+		{
+			return $this->unModele->selectMaxIdC();
+		}
+		public function selectMaxIdDon()
+		{
+			return $this->unModele->selectMaxIdDon();
+		}
+		public function selectCommandes($idP)
+		{
+			return $this->unModele->selectCommandes($idP);
+		}
+		public function selectMaxDispo($idProd)
+		{
+			return $this->unModele->selectMaxDispo($idProd);
+		}
+		public function Update($idS, $idProd, $nb)
+		{
+			return $this->unModele->Update($idS, $idProd, $nb);
+		}
+		public function updateStock($Nbdon, $idProd, $ids)
+		{
+			return $this->unModele->updateStock($Nbdon, $idProd, $ids);
+		}
     }
 ?>

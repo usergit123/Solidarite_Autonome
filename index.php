@@ -139,10 +139,15 @@
 					case 2:
 						echo "Page Commandes";
 						include ("vue/formulaire_sante.php");
+						$lesLignes = $unControleur->selectCommandes($_SESSION['idP']);
+						include("vue/tableau_commande.php");
 					break;
 					
 					case 3:
-						echo "Page mon compte";
+						echo "Page des dons";
+						include("vue/formulaire_don.php");
+						$lesLignes = $unControleur->selectDon($_SESSION['idP']);
+						include("vue/tableau_don.php");
 					break;
 					
 					case 4:

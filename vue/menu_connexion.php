@@ -6,7 +6,7 @@
 	<li><a href="index.php?con=5">Qui sommes nous</a></li>
 	
 	<li><a href="index.php?page=1">Stock</a></li>
-	<li><a href="index.php?page=2">Région</a></li>
-	<li><a href="index.php?page=3">Mon Compte</a></li>
+	<li><a href="index.php?page=2">Commandes</a></li>
+	<li><a href="index.php?page=3">Dons</a></li>
 </ul>
 <br>

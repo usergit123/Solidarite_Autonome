@@ -29,21 +29,16 @@ primary key(idProd)
 );
 create table stock
 (
-idS int not null,
+idS int auto_increment,
 libelle varchar(40),
 adresse varchar(40),
-IdResp int,
 cp char(5),
 tel char(10),
 idR int,
 idResp int,
 primary key(idS),
 foreign key(idR) references region(idR),
-
-foreign key(IdResp) references Responsable (Idresp)
-
 foreign key(idResp) references responsable(idResp)
-
 );
 create table personne
 (
@@ -61,14 +56,14 @@ foreign key(idR) references region(idR)
 );
 create table commande
 (
-idC int not null,
+idC int auto_increment,
 idP int,
 primary key(idC),
 foreign key(idP) references personne(idP)
 );
 create table donation
 (
-idDon int not null,
+idDon int auto_increment,
 idP int,
 primary key(idDon),
 foreign key(idP) references personne(idP)
@@ -79,7 +74,6 @@ idS int not null,
 idProd int not null,
 nbDispo int,
 primary key(idS,idProd),
-Nbdispo int,
 foreign key(idS) references stock(idS),
 foreign key(idProd) references produit(idProd)
 );
@@ -152,20 +146,15 @@ insert into personne values
 (null, "unNom", "unPrenom", "unPseudo","123","une adresse","93000","0102030405",1),
 (null, "Audran", "Puech", "Maman","123","4 rue des tapirs","93001","0102030409",1);
 
-insert into stock values 
-(1, "magnifique stock", "perpete","92600", "0102030405", 1, 1),
-(2, "slendide stock", "la flemme","93600", "0102030405", 1,1);
 
 
 insert into personne values (null, "unNom", "unPrenom", "unPseudo","123","une adresse","93000","0102030405",1),
  (null, "Audran", "Puech", "Maman","123","4 rue des tapirs","93001","0102030409",1);
 
 
-
-insert into responsable values (1,"unNomResp","unPrenomResp","une adresse", "81000", "0102030405");
-
-
-insert into responsable values (4,"Papa","Kiki","4 rue pagol","45000","0123565478"),
+insert into responsable values
+	(1,"unNomResp","unPrenomResp","une adresse", "81000", "0102030405"),
+	(4,"Papa","Kiki","4 rue pagol","45000","0123565478"),
     (2,"Lionel","juki","10 avenue de la gaulle","12000","0965847852"),
     (3,"Vorge","Huj","7 boulevard de la clemence","36500","0679621910");
 	
@@ -173,16 +162,13 @@ insert into stockage values (1,1,25),
     (2,2,500),
     (3,3,1000),
     (4,4,180);
-insert into responsable values (1,"Papa","Kiki","4 rue pagol",45000,0123565478),
-	(2,"Lionel","juki","10 avenue de la gaulle",12000,0965847852),
-	(3,"Vorge","Huj","7 boulevard de la clémence",36500,0679621910);
+
 
 insert into stock values 
-(1, "magnifique stock", "perpete",1,92600, "0102030405", 1),
-(2, "slendide stock", "la flemme",2,93600, "0102030405", 1),
-(3, " stock infame", "7 rue du genou",3,93600, "0102030405", 1),
-(4, "saucisses origan", "6 rue du hugo",2,93600, "0102030405", 1);
-
+(null, "magnifique stock", "perpete",92600, "0102030405", 1,2),
+(null, "slendide stock", "la flemme",93600, "0102030405", 1,3),
+(null, " stock infame", "7 rue du genou",93600, "0102030405", 1,1),
+(null, "saucisses origan", "6 rue du hugo",93600, "0102030405", 1,1);
 
 
 
