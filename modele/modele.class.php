@@ -59,7 +59,7 @@
 			$chaineWhere = implode ($operateur, $tabWhere);
 			
 			$requete = "select ".$chaineChamps." from ".$this->table." 
-			where ".$chaineWhere.";";
+			where ".$chaineWhere.";";						
 			
 			//echo $requete;
 			
@@ -106,6 +106,7 @@
 			if ($this->pdo != null)
 			{
 				$requete="insert into Demande values (".$IdProd.", ".$IdC.", ".$NbDemande.");";
+				//$requete="insert into Demande values (1,2,5);";
     		
 				//preparation de la requete
 				$select = $this->pdo->prepare ($requete);
@@ -118,7 +119,29 @@
 			{
 				return null;
 			}
+		}
+		
+		public function insertDonne ($IdProd, $IdDon, $Nbdon)
+		{
+			if ($this->pdo != null)
+			{
+				$requete="insert into Don values (".$IdProd.", ".$IdDon.", ".$Nbdon.");";
+				//$requete="insert into Demande values (1,2,5);";
+    		
+				//preparation de la requete
+				$select = $this->pdo->prepare ($requete);
+				//execution de la requete
+				$select->execute ();
+				//extraction des enregistrements
+				return $select->fetchALL();
 			}
+			else
+			{
+				return null;
+			}
+		}
+		
+		
 		public function selectALLStock()
 		{
 			if ($this->pdo !=null)
@@ -153,9 +176,9 @@
 				}
 				$chaineTab = implode (", ", $tabValues);
 				
-				$requete = "insert into ".$this->table." value (null, ".$chaineTab.");";
+				$requete = "insert into ".$this->table." values (null, ".$chaineTab.");";
 				
-				echo $requete;
+				//echo $requete;
 				
 				$select = $this->pdo->prepare ($requete);
 				//execution de la requete
@@ -163,30 +186,7 @@
 			}
 		}
 		
-		public function insert_participer ($tab)
-		{
-			//var_dump($tab);
-			if ($this->pdo !=null) //appel de la fonction connexion
-			{
-				$donnees = array();
-				$tabValues = array();
-				foreach ($tab as $cle=>$valeur)
-				{
-					$tabValues[] = ":".$cle;
-					$donnees[":".$cle] = $valeur;
-				}
-				$chaineTab = implode (", ", $tabValues);
-				
-				$requete = "insert into ".$this->table." value (".$tab['idL'].",".$tab['idP'].",".$tab['datePL'].");";
-				
-				//echo $requete;
-				
-				$select = $this->pdo->prepare ($requete);
-				//execution de la requete
-				$select->execute ($donnees);
-				//var_dump($donnees);
-			}
-		}
+		
 		
 		
 		public function delete($tabId)
@@ -201,9 +201,11 @@
 					$tab[] = $cle." = :".$cle;
 					$donnees[":".$cle] = $valeur;
 				}
-				$chaine = implode (", ", $tab);
+				$chaine = implode (" and ", $tab);
 				
 				$requete = "delete from ".$this->table." where ".$chaine.";";
+				
+				echo $requete;
 				
 				$select = $this->pdo->prepare ($requete);
 				//execution de la requete avec les donnees des variables PDO
@@ -229,5 +231,113 @@
 				return null;
 			}
 		}
+		public function selectMaxIdC()
+		{
+			if ($this->pdo !=null) //appel de la fonction conn
+			{
+				$requete = "select max(idC) from commande;";
+				//preparation de la requete
+					$select = $this->pdo->prepare ($requete);
+					//execution de la requete
+					$select->execute ();
+					//extraction des enregistrements
+					return $select->fetchALL();
+			}
+			else
+			{
+				return null;
+			}
+		}
+		
+		public function selectMaxIdDon()
+		{
+			if ($this->pdo !=null) //appel de la fonction conn
+			{
+				$requete = "select max(idDon) from Donation;";
+				//preparation de la requete
+					$select = $this->pdo->prepare ($requete);
+					//execution de la requete
+					$select->execute ();
+					//extraction des enregistrements
+					return $select->fetchALL();
+			}
+			else
+			{
+				return null;
+			}
+		}
+		
+		public function selectCommandes($idP)
+		{
+			if ($this->pdo !=null) //appel de la fonction conn
+			{
+				$requete = "select d.idC numero, prod.libelle produit, nbDemande nombre from personne p, commande c, demande d, produit prod
+				where p.idP = c.idP and c.idC = d.idC and d.idProd = prod.idprod and p.idP = ".$idP.";";
+				//preparation de la requete
+					$select = $this->pdo->prepare ($requete);
+					//execution de la requete
+					$select->execute ();
+					//extraction des enregistrements
+					return $select->fetchALL();
+			}
+			else
+			{
+				return null;
+			}
+		}
+		public function selectMaxDispo($idProd)
+		{
+			if ($this->pdo !=null) //appel de la fonction conn
+			{
+				$requete = "select s.ids stock, prod.idprod produit, nbdispo from stock s, stockage st, produit prod
+							where s.ids=st.ids and st.idprod=prod.idprod and nbdispo=(select max(nbdispo) from stockage where idprod = ".$idProd.");";
+				//preparation de la requete
+					$select = $this->pdo->prepare ($requete);
+					//execution de la requete
+					$select->execute ();
+					//extraction des enregistrements
+					return $select->fetchALL();
+			}
+			else
+			{
+				return null;
+			}
+		}
+		public function Update($idS, $idProd, $nb)
+		{
+			if ($this->pdo !=null) //appel de la fonction conn
+			{
+				$requete = "update stockage set nbdispo = nbdispo - ".$nb." where ids = ".$idS." and idprod = ".$idProd.";";
+				//preparation de la requete
+					$select = $this->pdo->prepare ($requete);
+					//execution de la requete
+					$select->execute ();
+					//extraction des enregistrements
+					return $select->fetchALL();
+			}
+			else
+			{
+				return null;
+			}
+		}
+		
+		public function updateStock($Nbdon, $idprod, $ids)
+		{
+			if ($this->pdo !=null) //appel de la fonction conn
+			{
+				$requete = "update stockage set nbdispo = nbdispo + ".$Nbdon." where idprod = ".$idprod." and ids = ".$ids.";";
+				//preparation de la requete
+					$select = $this->pdo->prepare ($requete);
+					//execution de la requete
+					$select->execute ();
+					//extraction des enregistrements
+					return $select->fetchALL();
+			}
+			else
+			{
+				return null;
+			}
+		}
+		
 	}		
 ?>
