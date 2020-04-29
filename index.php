@@ -10,6 +10,20 @@
     <meta charset="UTF-8">
     <title>Bénévolat - Solidarité Autonome</title>
 	<link rel="stylesheet" type="text/css" href="style/style.css">
+	
+	
+	
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+	
+	
     
   </head> 
   <body bgcolor=#EFF2FB>
@@ -185,11 +199,24 @@
 </tr>
 </table>
 
-<!--
-<footer>
-	<p style="text-align:center; color:white;" >Designed by Kévin, Audran, Alexandre, Tanguy, Alexy, Francis, William, Gabriel</p>
-</footer>
--->
+<section class="py-5 text-white bg-dark  ">
+    <div class="container py-5">
+	<div class="row py-5">
+            <div class="col-md-6">
+                <h1><b>Organize all your media content easily</b></h1>
+                <p>Feugiat primis ligula risus auctor a laoreet egestas augue mauris viverra tortor in iaculis pretium magna, mauris rhoncus ipsum placerat feugiat primis</p>
+                 <form class="form-inline">
+                      <div class="form-group mb-2">
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                      </div>
+                      <button type="submit" class="btn btn-success mb-2 ml-1">Confirm identity</button>
+                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </form>
+                               
+            </div>
+        </div>
+</div>
+</section>
 	</div>
 
   </body>
