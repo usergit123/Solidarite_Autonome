@@ -19,16 +19,16 @@
 					Produit : <br>
 				<table>
 					<tr>
-						<td>Gants de securite</td>		<td><input type="radio" name="Produit" value="1"></td>
+						<td>Masque de protection</td>		<td><input type="radio" name="Produit" value="1"></td>
 					</tr>
 					<tr>
-						<td>Combinaison</td>			<td><input type="radio" name="Produit" value="2"></td>
+						<td>Gant de protection</td>			<td><input type="radio" name="Produit" value="2"></td>
 					</tr>
 					<tr>
 						<td>Gel hydro-alcoolique</td>	<td><input type="radio" name="Produit" value="3"></td>
 					</tr>
 					<tr>
-						<td>Masque de protection</td>	<td><input type="radio" name="Produit" value="4"></td>
+						<td>Combinaison de sécurité</td>	<td><input type="radio" name="Produit" value="4"></td>
 					</tr>
 				</table>
 	                
@@ -62,7 +62,7 @@
 if (isset ($_POST["Commander"]))
 {
 	
-	
+	/*
 	$tab = $unControleur->selectMaxDispo($_POST['Produit']);
 	
 	//var_dump($tab);
@@ -95,6 +95,17 @@ if (isset ($_POST["Commander"]))
 		
 		$unControleur->insertDemande($_POST['Produit'], $IdC, $_POST["Nbdemande"]);
 	}
+	*/
+	
+	$unControleur->setTable("Commande");
+		$tab = array("idP"=>$_SESSION['idP']);
+		$unControleur->insert($tab);
+
+		$IdC = $unControleur->selectMaxidC();
+		$IdC = $IdC[0][0];
+		//echo $IdC;
+		
+		$unControleur->insertDemande($_POST['Produit'], $IdC, $_POST["Nbdemande"]);
 
 
 }

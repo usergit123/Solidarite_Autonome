@@ -5,6 +5,8 @@ use solidarite;
 create table responsable
 (
 idResp int not null,
+pseudo varchar(20),
+mdp varchar(20),
 nom varchar(20),
 prenom varchar(20),
 adresse varchar(40),
@@ -153,10 +155,10 @@ insert into personne values (null, "unNom", "unPrenom", "unPseudo","123","une ad
 
 
 insert into responsable values
-	(1,"unNomResp","unPrenomResp","une adresse", "81000", "0102030405"),
-	(4,"Papa","Kiki","4 rue pagol","45000","0123565478"),
-    (2,"Lionel","juki","10 avenue de la gaulle","12000","0965847852"),
-    (3,"Vorge","Huj","7 boulevard de la clemence","36500","0679621910");
+	(1,"unResponsable","123","unNomResp","unPrenomResp","une adresse", "81000", "0102030405"),
+	(4,"un","123","Papa","Kiki","4 rue pagol","45000","0123565478"),
+    (2,"deux","123,","Lionel","juki","10 avenue de la gaulle","12000","0965847852"),
+    (3,"trois","123","Vorge","Huj","7 boulevard de la clemence","36500","0679621910");
 	
 insert into stockage values (1,1,25), 
     (2,2,500),

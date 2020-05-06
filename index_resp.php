@@ -29,11 +29,11 @@
   <body bgcolor=#EFF2FB>
   <div id="main">
 	<?php
-	  if (isset($_SESSION['idP']))
+	  if (isset($_SESSION['idResp']))
 	  {
 		  echo "<p class='ali'><a href='index.php?page=10' class='deco'>Déconnexion</a></p>";
 	  }else{
-		  echo "<p class='ali'><a href='index.php?con=1' class='deco'>Connexion</a></p>";
+		  echo "<p class='ali'><a href='index_resp.php?con=1' class='deco'>Connexion</a></p>";
 	  }
   ?>
 		
@@ -51,9 +51,9 @@
 <tr>
 	<td style="vertical-align:top;">
 	<?php
-		if(isset($_SESSION['idP']))
+		if(isset($_SESSION['idResp']))
 		{
-			include("vue/menu_connexion.php");
+			include("vue/menu_resp.php");
 		}else{
 			include("vue/menu.php");
 		}
@@ -71,7 +71,7 @@
 		{
 			case 1 :
 				include ("vue/form_connexion.php");
-				include("vue/connexion.php");								
+				include("vue/connexion_resp.php");								
 			break;
 			
 			case 2 :

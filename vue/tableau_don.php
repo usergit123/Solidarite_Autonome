@@ -29,7 +29,7 @@
 	{
 		echo "<tr> <td>".$uneLigne['numero']."</td>
 		<td>".$uneLigne['produit']."</td>
-		<td>".$uneLigne['nombre']."</td>
+		<td>".$uneLigne['nb']."</td>
 		
 		</tr>";
 	}
