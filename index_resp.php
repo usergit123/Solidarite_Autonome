@@ -209,8 +209,7 @@
     
 	
             
-                <h1><b>Organize all your media content easily</b></h1>
-                <p>Feugiat primis ligula risus auctor a laoreet egestas augue mauris viverra tortor in iaculis pretium magna, mauris rhoncus ipsum placerat feugiat primis</p>
+                <h1><b>Designed by Alexis, Alexandre, Audran, Kévin, Tanguy, William</p>
                  
                                
             

@@ -147,17 +147,15 @@ insert into demande values (1,1,3),(2,2,5),(3,3,7), (4,4,8), (1,5,9), (2, 6, 10)
 insert into region values (1, "Aquitaine", 34, 32 ), (2, "Ile-de-france", 23, 67), (3, "Limousin", 87,90);
 
 insert into personne values 
-<<<<<<< HEAD
+
 (null, "unNom", "unPrenom", "unPseudo",123,"une adresse","93000","0102030405",1),
 (null, "Audran", "Puech", "Maman",123,"4 rue des tapirs","93001","0102030409",1);
-=======
-(null, "unNom", "unPrenom", "unPseudo","123","une adresse","93000","0102030405",1),
-(null, "Audran", "Puech", "Maman","123","4 rue des tapirs","93001","0102030409",1);
+
 
 
 insert into reponse values (1, 1, "un texte");
 
->>>>>>> 6b01c1ddb1f05fc04b2c3b2dcf9ab188554ce7de
+
 
 
 insert into responsable values

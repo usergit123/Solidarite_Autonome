@@ -34,11 +34,11 @@ if (isset($_POST['SeConnecter']))
 					
 					
 					header('Location: index.php?first=1');
-<<<<<<< HEAD
+
 					
-=======
+
 					//ob_end_flush();
->>>>>>> 6b01c1ddb1f05fc04b2c3b2dcf9ab188554ce7de
+
 			}
 		}
 ?>
