@@ -166,7 +166,8 @@
 					case 3:
 						echo "Page des dons";
 						include("vue/formulaire_don.php");
-						$lesLignes = $unControleur->selectDon($_SESSION['idP']);
+						
+						$lesLignes = $unControleur->selecALLDon();
 						include("vue/tableau_don.php");
 					break;
 					

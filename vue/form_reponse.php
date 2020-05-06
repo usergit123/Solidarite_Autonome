@@ -50,7 +50,7 @@ if(isset($_POST['Répondre']))
 {
 	$unControleur->setTable("reponse");
 	$tab = array("idS"=>$_POST['stock'],"idC"=>$_POST['idC'],"texte"=>$_POST['texte'],);
-	$unControleur->insert($tab);
+	$unControleur->insertRelation($tab);
 }
 
 ?>

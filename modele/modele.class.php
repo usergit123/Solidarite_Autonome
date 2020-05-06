@@ -174,12 +174,13 @@
 				{
 					$tabValues[] = ":".$cle;
 					$donnees[":".$cle] = $valeur;
+					echo $valeur;	
 				}
 				$chaineTab = implode (", ", $tabValues);
 				
 				$requete = "insert into ".$this->table." values (null, ".$chaineTab.");";
 				
-				//echo $requete;
+				echo $requete;
 				
 				$select = $this->pdo->prepare ($requete);
 				//execution de la requete
@@ -187,6 +188,29 @@
 			}
 		}
 		
+		public function insertRelation ($tab)
+		{
+			if ($this->pdo !=null) //appel de la fonction connexion
+			{
+				$donnees = array();
+				$tabValues = array();
+				foreach ($tab as $cle=>$valeur)
+				{
+					$tabValues[] = ":".$cle;
+					$donnees[":".$cle] = $valeur;
+					echo $valeur;	
+				}
+				$chaineTab = implode (", ", $tabValues);
+				
+				$requete = "insert into ".$this->table." values (".$chaineTab.");";
+				
+				echo $requete;
+				
+				$select = $this->pdo->prepare ($requete);
+				//execution de la requete
+				$select->execute ($donnees);
+			}
+		}
 		
 		
 		
@@ -371,6 +395,25 @@
 			{
 				$requete = "select p.idp, donation.iddon numero, nbdonne nb, prod.libelle produit from donation, don, produit prod, personne p
 							where donation.iddon=don.iddon and don.idprod=prod.idprod and donation.idp=p.idp and p.idp= ".$idP.";";
+				//preparation de la requete
+					$select = $this->pdo->prepare ($requete);
+					//execution de la requete
+					$select->execute ();
+					//extraction des enregistrements
+					return $select->fetchALL();
+			}
+			else
+			{
+				return null;
+			}
+		}
+		
+		public function selectALLDon()
+		{
+			if ($this->pdo !=null) //appel de la fonction conn
+			{
+				$requete = "select p.idp, donation.iddon numero, nbdonne nb, prod.libelle produit from donation, don, produit prod, personne p
+							where donation.iddon=don.iddon and don.idprod=prod.idprod and donation.idp=p.idp;";
 				//preparation de la requete
 					$select = $this->pdo->prepare ($requete);
 					//execution de la requete

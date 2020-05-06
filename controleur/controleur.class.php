@@ -27,6 +27,12 @@
             //le role du controleur 
             $this->unModele->insert ($tab);
         }
+		public function insertRelation ($tab)
+        {
+            //on peut controler les donnees avant insertion
+            //le role du controleur 
+            $this->unModele->insertRelation ($tab);
+        }
 		
 		
         public function delete ($tabId)
@@ -74,6 +80,11 @@
 		public function selectDon ($idP)
 		{
 			return $this->unModele->selectDon($idP);
+		}
+		
+		public function selectALLDon ()
+		{
+			return $this->unModele->selectALLDon();
 		}
 		
 		public function selectMaxIdC()

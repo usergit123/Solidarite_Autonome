@@ -5,11 +5,11 @@ use solidarite;
 create table responsable
 (
 idResp int auto_increment,
-pseudo varchar(20) unique,
+pseudoResp varchar(20) unique,
 mdp varchar(20),
 nom varchar(20),
 pseudo varchar(40),
-mdp varchar(40),
+mdpResp varchar(40),
 ville varchar(40),
 prenom varchar(20),
 adresse varchar(40),
@@ -70,7 +70,7 @@ create table commande
 (
 idC int auto_increment,
 idP int,
-desc varchar(40),
+description varchar(40),
 datec date,
 primary key(idC),
 foreign key(idP) references personne(idP)
@@ -79,7 +79,7 @@ create table donation
 (
 idDon int auto_increment,
 idP int,
-desc varchar(40),
+description varchar(40),
 dated date,
 primary key(idDon),
 foreign key(idP) references personne(idP)
@@ -164,6 +164,10 @@ insert into personne values
 
 
 insert into reponse values (1, 1, "un texte");
+
+insert into don (1,1, 7);
+
+
 
 
 
