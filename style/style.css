@@ -103,7 +103,158 @@ label
 }
 
 
+body {
+    margin: 0;
+}
 
+#slider {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    height: 400px;
+}
+
+#slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    max-height: 100%;
+    /*CSS3 keyframes animation*/
+    animation-name: slide;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+#slides:hover {
+    animation-play-state: paused; /* Mise en pause de l'animation */
+}
+
+#slides figure {
+    display: inline-block;
+    width: 100vw;
+    max-height: 100%;
+    margin: 0;
+}
+
+#slides figure img {
+    width: 100%;
+    /*Centrer l'image verticalement si celle-ci ne peut être affichée totalement*/
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#slides figure figcaption {
+    position: absolute;
+    bottom: 0;
+    padding: 2.5em 0;
+    text-align: center;
+    width: inherit;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+}
+
+.dots_commands  {
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    padding:0;
+    margin: 0;
+    text-align: center;
+}
+
+.dots_commands li {
+    display: inline;
+    padding:0; margin:0;
+}
+
+.dots_commands label {
+    position: relative;
+    display: inline-block;
+    height:8px; width: 8px;
+    margin: 0 5px;
+    text-indent: -9999px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.55) inset;
+    cursor: pointer;
+}
+
+.dots_commands label:active {
+    outline: none;
+    background: dodgerblue;
+}
+
+#play {
+    position: absolute;
+    cursor: pointer;
+    bottom: 2em;
+    right: 2em;
+    width: 0;
+    height: 0;
+    border-top: 1em solid transparent;
+    border-bottom: 1em solid transparent;
+    border-left: 1em solid rgba(255,255,255,0.7);
+    display: none;
+    text-indent: -9999px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]#show_slide1:checked ~ nav .dots_commands li:nth-of-type(1) label,
+input[type="radio"]#show_slide2:checked ~ nav .dots_commands li:nth-of-type(2) label,
+input[type="radio"]#show_slide3:checked ~ nav .dots_commands li:nth-of-type(3) label {
+    outline: none;
+    background: dodgerblue;
+}
+
+input[type="radio"]#show_slide1:checked ~ div#slides {
+    animation: none;
+    left: 0;
+}
+
+input[type="radio"]#show_slide2:checked ~ div#slides {
+    animation: none;
+    left: -100vw;
+}
+
+input[type="radio"]#show_slide3:checked ~ div#slides {
+    animation: none;
+    left: -200vw;
+}
+
+input[type="radio"]:not(:nth-last-of-type(1)):checked ~ nav label#play {
+    display: block;
+}
+
+input[type="radio"]#play:checked ~ div#slides {
+    animation-name: slide;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide {
+    0%, 20%, 100% {
+        left: 0; /*1ère image*/
+    }
+    35%, 50% {
+        left: -100vw; /*2ème image*/
+    }
+    70%, 95% {
+        left: -200vw; /*3ème image*/
+    }
+}
+
+footer {
+  text-align: center;
+}
 
 
 

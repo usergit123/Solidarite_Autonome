@@ -34,7 +34,7 @@ if (isset($_POST['SeConnecter']))
 					
 					
 					header('Location: index.php?first=1');
-					ob_end_flush();
+					
 			}
 		}
 ?>
