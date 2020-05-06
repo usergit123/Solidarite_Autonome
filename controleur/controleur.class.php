@@ -71,6 +71,11 @@
 			return $this->unModele->selectBesoins();
 		}
 		
+		public function selectDon ($idP)
+		{
+			return $this->unModele->selectDon($idP);
+		}
+		
 		public function selectMaxIdC()
 		{
 			return $this->unModele->selectMaxIdC();

@@ -339,5 +339,24 @@
 			}
 		}
 		
+		public function selectDon($idP)
+		{
+			if ($this->pdo !=null) //appel de la fonction conn
+			{
+				$requete = "select p.idp, donation.iddon numero, nbdonne nb, prod.libelle produit from donation, don, produit prod, personne p
+							where donation.iddon=don.iddon and don.idprod=prod.idprod and donation.idp=p.idp and p.idp= ".$idP.";";
+				//preparation de la requete
+					$select = $this->pdo->prepare ($requete);
+					//execution de la requete
+					$select->execute ();
+					//extraction des enregistrements
+					return $select->fetchALL();
+			}
+			else
+			{
+				return null;
+			}
+		}
+		
 	}		
 ?>
