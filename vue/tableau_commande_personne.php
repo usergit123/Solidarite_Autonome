@@ -13,7 +13,6 @@
 
 		<thead>
 			<tr>
-				<th>Région</th>
 				<th>N° commande</th>
 				<th>Produit</th>
 				<th>Nombre</th>
@@ -28,10 +27,7 @@
 	//parcourir les lignes et les afficher dans la table
 	foreach ($lesLignes as $uneLigne)
 	{
-		echo "
-		<tr>
-		<td>".$uneLigne['region']."</td>
-		<td>".$uneLigne['numero']."</td>
+		echo "<tr> <td>".$uneLigne['numero']."</td>
 		<td>".$uneLigne['produit']."</td>
 		<td>".$uneLigne['nombre']."</td>
 		

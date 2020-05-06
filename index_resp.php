@@ -28,10 +28,11 @@
   </head> 
   <body bgcolor=#EFF2FB>
   <div id="main">
+	
 	<?php
 	  if (isset($_SESSION['idResp']))
 	  {
-		  echo "<p class='ali'><a href='index.php?page=10' class='deco'>Déconnexion</a></p>";
+		  echo "<p class='ali'><a href='index_resp.php?page=10' class='deco'>Déconnexion</a></p>";
 	  }else{
 		  echo "<p class='ali'><a href='index_resp.php?con=1' class='deco'>Connexion</a></p>";
 	  }
@@ -114,13 +115,14 @@
 	{
 		
 		//page d'accueil
-		echo "</br></br><strong>Bienvenue sur le site Solidarite Autonome</strong><br><br>";
-		echo "explication";
+		
+		include ("vue/form_connexion.php");
+		include("vue/connexion_resp.php");	
 		
 	}
 	else
 	{		
-		if (isset($_SESSION['idP']))
+		if (isset($_SESSION['idResp']))
 		{
 				
 				//si la personne vient de se connecter
@@ -155,8 +157,9 @@
 					
 					case 2:
 						echo "Page Commandes";
-						include ("vue/formulaire_sante.php");
-						$lesLignes = $unControleur->selectCommandes($_SESSION['idP']);
+						
+						include("vue/form_reponse.php");
+						$lesLignes = $unControleur->selectCommandesResp();
 						include("vue/tableau_commande.php");
 					break;
 					
