@@ -54,6 +54,7 @@
 			{
 				$tabWhere[] = $cle."= :".$cle;
 				$donnees[":".$cle] = $valeur;
+				echo $valeur;
 			}
 			
 			$chaineWhere = implode ($operateur, $tabWhere);
@@ -61,7 +62,7 @@
 			$requete = "select ".$chaineChamps." from ".$this->table." 
 			where ".$chaineWhere.";";						
 			
-			//echo $requete;
+			echo $requete;
 			
 			if ($this->pdo !=null) //appel de la fonction conn
 			{
@@ -285,6 +286,31 @@
 				return null;
 			}
 		}
+		
+		public function selectCommandesResp()
+		{
+			if ($this->pdo !=null) //appel de la fonction conn
+			{
+				$requete = "select r.libelle region, d.idC numero, prod.libelle produit, nbDemande nombre
+							from personne p, commande c, demande d, produit prod, region r
+							where p.idP = c.idP and c.idC = d.idC and d.idProd = prod.idprod and p.idR=R.idR
+							and c.idC not in (select idC from reponse);";
+							
+							
+				//preparation de la requete
+					$select = $this->pdo->prepare ($requete);
+					//execution de la requete
+					$select->execute ();
+					//extraction des enregistrements
+					return $select->fetchALL();
+			}
+			else
+			{
+				return null;
+			}
+		}
+		
+		
 		public function selectMaxDispo($idProd)
 		{
 			if ($this->pdo !=null) //appel de la fonction conn

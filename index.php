@@ -157,7 +157,7 @@
 						echo "Page Commandes";
 						include ("vue/formulaire_sante.php");
 						$lesLignes = $unControleur->selectCommandes($_SESSION['idP']);
-						include("vue/tableau_commande.php");
+						include("vue/tableau_commande_personne.php");
 					break;
 					
 					case 3:

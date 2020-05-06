@@ -100,5 +100,9 @@
 		{
 			return $this->unModele->updateStock($Nbdon, $idProd, $ids);
 		}
+		public function selectCommandesResp()
+		{
+			return $this->unModele->selectCommandesResp();
+		}
     }
 ?>

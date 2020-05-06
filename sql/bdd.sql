@@ -4,8 +4,8 @@ use solidarite;
 
 create table responsable
 (
-idResp int not null,
-pseudo varchar(20),
+idResp int auto_increment,
+pseudo varchar(20) unique,
 mdp varchar(20),
 nom varchar(20),
 prenom varchar(20),
@@ -14,6 +14,8 @@ cp char(5),
 tel char(10),
 primary key(idResp)
 );
+
+
 create table region
 (
 idR int not null,
@@ -47,7 +49,7 @@ create table personne
 idP int auto_increment,
 nom varchar(20),
 prenom varchar(20),
-pseudo varchar(20),
+pseudo varchar(20) unique,
 mdp varchar(20),
 adresse varchar(40),
 cp char(5),
@@ -149,18 +151,18 @@ insert into personne values
 (null, "Audran", "Puech", "Maman","123","4 rue des tapirs","93001","0102030409",1);
 
 
+insert into reponse values (1, 1, "un texte");
 
-insert into personne values (null, "unNom", "unPrenom", "unPseudo","123","une adresse","93000","0102030405",1),
- (null, "Audran", "Puech", "Maman","123","4 rue des tapirs","93001","0102030409",1);
 
 
 insert into responsable values
-	(1,"unResponsable","123","unNomResp","unPrenomResp","une adresse", "81000", "0102030405"),
-	(4,"un","123","Papa","Kiki","4 rue pagol","45000","0123565478"),
-    (2,"deux","123,","Lionel","juki","10 avenue de la gaulle","12000","0965847852"),
-    (3,"trois","123","Vorge","Huj","7 boulevard de la clemence","36500","0679621910");
+	(null,"unResponsable","123","unNomResp","unPrenomResp","une adresse", "81000", "0102030405"),
+	(null,"un","123","Papa","Kiki","4 rue pagol","45000","0123565478"),
+    (null,"deux","123,","Lionel","juki","10 avenue de la gaulle","12000","0965847852"),
+    (null,"trois","123","Vorge","Huj","7 boulevard de la clemence","36500","0679621910");
 	
-insert into stockage values (1,1,25), 
+insert into stockage values 
+	(1,1,25), 
     (2,2,500),
     (3,3,1000),
     (4,4,180);
