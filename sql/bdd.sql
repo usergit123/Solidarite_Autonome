@@ -177,6 +177,9 @@ insert into stock values
 (null, " stock infame", "7 rue du genou",93600, "0102030405", 1,1),
 (null, "saucisses origan", "6 rue du hugo",93600, "0102030405", 1,1);
 
+insert into stockage values 
+(1,1,100);
+
 
 
 
