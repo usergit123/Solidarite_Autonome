@@ -5,17 +5,14 @@ use solidarite;
 create table responsable
 (
 idResp int auto_increment,
-pseudoResp varchar(20) unique,
-mdp varchar(20),
-nom varchar(20),
 pseudo varchar(40),
-mdpResp varchar(40),
-ville varchar(40),
+mdp varchar(40),
+nom varchar(20),
 prenom varchar(20),
 adresse varchar(40),
+ville varchar(40),
 cp char(5),
 tel char(10),
-mail varchar(40),
 primary key(idResp)
 );
 
@@ -29,12 +26,10 @@ y int,
 primary key(idR)
 );
 
-
 create table produit
 (
 idProd int not null,
 libelle varchar(40),
-Categorie varchar(40),
 primary key(idProd)
 );
 create table stock
@@ -58,9 +53,7 @@ prenom varchar(20),
 pseudo varchar(20) unique,
 mdp varchar(20),
 adresse varchar(40),
-mail varchar(40),
 cp char(5),
-ville varchar(40),
 tel char(10),
 idR int,
 primary key(idP),
@@ -153,29 +146,31 @@ insert into personne values
 */
 
 
-insert into commande values (1, 1),(2,1), (3,1), (4,1), (5,2),(6,2);
 insert into produit values (1,"Masque de protection"), (2, "Gants de protection"), (3, "Gel hydro-alcoolique"), (4, "Combinaison de securite");
 insert into demande values (1,1,3),(2,2,5),(3,3,7), (4,4,8), (1,5,9), (2, 6, 10), (3,5, 11), (4,6,12);
 insert into region values (1, "Aquitaine", 34, 32 ), (2, "Ile-de-france", 23, 67), (3, "Limousin", 87,90);
 
 insert into personne values 
-(null, "unNom", "unPrenom", "unPseudo","123","une adresse","93000","0102030405",1),
-(null, "Audran", "Puech", "Maman","123","4 rue des tapirs","93001","0102030409",1);
+
+(null, "unNom", "unPrenom", "unPseudo",123,"une adresse","93000","0102030405",1),
+(null, "Audran", "Puech", "Maman",123,"4 rue des tapirs","93001","0102030409",1);
+
 
 
 insert into reponse values (1, 1, "un texte");
 
-insert into don (1,1, 7);
+insert into don values (1,1, 7);
+
 
 
 
 
 
 insert into responsable values
-	(null,"unResponsable","123","unNomResp","unPrenomResp","une adresse", "81000", "0102030405"),
-	(null,"un","123","Papa","Kiki","4 rue pagol","45000","0123565478"),
-    (null,"deux","123,","Lionel","juki","10 avenue de la gaulle","12000","0965847852"),
-    (null,"trois","123","Vorge","Huj","7 boulevard de la clemence","36500","0679621910");
+	(null,"unResponsable","123","unNomResp","unPrenomResp","une adresse","une ville", "81000", "0102030405"),
+	(null,"un","123","Papa","Kiki","4 rue pagol","une ville","45000","0123565478"),
+    (null,"deux","123,","Lionel","juki","10 avenue de la gaulle","une ville","12000","0965847852"),
+    (null,"trois","123","Vorge","Huj","7 boulevard de la clemence","une villeS","36500","0679621910");
 	
 insert into stockage values 
 	(1,1,25), 

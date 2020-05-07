@@ -34,7 +34,7 @@
 	  {
 		  echo "<p class='ali'><a href='index_resp.php?page=10' class='deco'>Déconnexion</a></p>";
 	  }else{
-		  echo "<p class='ali'><a href='index_resp.php?con=1' class='deco'>Connexion</a></p>";
+		  echo "<p class='ali'><a href='index.php?con=1' class='deco'>Connexion</a></p>";
 	  }
   ?>
 		
@@ -167,7 +167,7 @@
 						echo "Page des dons";
 						include("vue/formulaire_don.php");
 						
-						$lesLignes = $unControleur->selecALLDon();
+						$lesLignes = $unControleur->selectALLDon();
 						include("vue/tableau_don.php");
 					break;
 					
@@ -210,8 +210,7 @@
     
 	
             
-                <h1><b>Organize all your media content easily</b></h1>
-                <p>Feugiat primis ligula risus auctor a laoreet egestas augue mauris viverra tortor in iaculis pretium magna, mauris rhoncus ipsum placerat feugiat primis</p>
+                <h1><b>Designed by Alexis, Alexandre, Audran, Kévin, Tanguy, William</p>
                  
                                
             
