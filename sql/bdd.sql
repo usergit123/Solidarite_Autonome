@@ -186,5 +186,7 @@ insert into stock values
 (null, "saucisses origan", "6 rue du hugo",93600, "0102030405", 1,1);
 
 
+
 insert into donation values (1, 1, "une description", "2020-02-02");
+
 
