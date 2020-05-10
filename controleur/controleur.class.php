@@ -115,5 +115,17 @@
 		{
 			return $this->unModele->selectCommandesResp();
 		}
+		public function updateStockageUp($idS, $idProd, $nbDispo)
+		{
+			return $this->unModele->updateStockageUp($idS, $idProd, $nbDispo);
+		}
+		public function selectStockResp($idResp)
+		{
+			return $this->unModele->selectStockResp($idResp);
+		}
+		public function updateStockageDown($idS,$idProd,$nombre)
+		{
+			$this->unModele->updateStockageDown($idS,$idProd,$nombre);
+		}
     }
 ?>

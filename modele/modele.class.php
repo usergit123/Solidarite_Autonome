@@ -54,7 +54,7 @@
 			{
 				$tabWhere[] = $cle."= :".$cle;
 				$donnees[":".$cle] = $valeur;
-				echo $valeur;
+				//echo $valeur;
 			}
 			
 			$chaineWhere = implode ($operateur, $tabWhere);
@@ -62,7 +62,7 @@
 			$requete = "select ".$chaineChamps." from ".$this->table." 
 			where ".$chaineWhere.";";						
 			
-			echo $requete;
+			//echo $requete;
 			
 			if ($this->pdo !=null) //appel de la fonction conn
 			{
@@ -106,13 +106,14 @@
 		{
 			if ($this->pdo != null)
 			{
-				$requete="insert into Demande values (".$IdProd.", ".$IdC.", ".$NbDemande.");";
+				$donnees = array(":IdProd"=>$IdProd,":IdC"=>$IdC,":NbDemande"=>$NbDemande);
+				$requete="insert into Demande values (:IdProd, :IdC, :NbDemande);";
 				//$requete="insert into Demande values (1,2,5);";
     		
 				//preparation de la requete
 				$select = $this->pdo->prepare ($requete);
 				//execution de la requete
-				$select->execute ();
+				$select->execute ($donnees);
 				//extraction des enregistrements
 				return $select->fetchALL();
 			}
@@ -126,13 +127,15 @@
 		{
 			if ($this->pdo != null)
 			{
-				$requete="insert into Don values (".$IdProd.", ".$IdDon.", ".$Nbdon.");";
+				$donnees = array(":IdProd"=>$IdProd,":IdDon"=>$IdDon,":Nbdon"=>$Nbdon);
+				$requete="insert into Don values (:IdProd, :IdDon, :Nbdon);";
+				
 				//$requete="insert into Demande values (1,2,5);";
     		
 				//preparation de la requete
 				$select = $this->pdo->prepare ($requete);
 				//execution de la requete
-				$select->execute ();
+				$select->execute ($donnees);
 				//extraction des enregistrements
 				return $select->fetchALL();
 			}
@@ -163,6 +166,30 @@
 				return null;
 			}
 		}
+		
+		
+		public function selectStockResp($idResp)
+		{
+			if ($this->pdo !=null)
+			{
+				$donnees = array(":idResp"=>$idResp);
+				$requete="select Re.Libelle Region, R.Nom Nom ,R.Prenom Prenom, R.Tel Telephone, S.Libelle Nom_Stock, P.Libelle Produit,St.NbDispo NbStock
+			    from Produit P, Stockage St, Stock S, Region Re, Responsable R
+			    Where P.IdProd = St.IdProd and St.Ids=S.IDs and R.Idresp = S.IdResp and S.IdR= Re.Idr and S.idResp = :idResp;";
+    		
+				//preparation de la requete
+				$select = $this->pdo->prepare ($requete);
+				//execution de la requete
+				$select->execute ($donnees);
+				//extraction des enregistrements
+				return $select->fetchALL();
+			}
+			else
+			{
+				return null;
+			}
+		}
+		
 
 		public function insert ($tab)
 		{
@@ -174,13 +201,14 @@
 				{
 					$tabValues[] = ":".$cle;
 					$donnees[":".$cle] = $valeur;
-					echo $valeur;	
+					//echo $valeur;	
 				}
 				$chaineTab = implode (", ", $tabValues);
 				
 				$requete = "insert into ".$this->table." values (null, ".$chaineTab.");";
 				
-				echo $requete;
+				//echo $requete;
+				//var_dump($tab);
 				
 				$select = $this->pdo->prepare ($requete);
 				//execution de la requete
@@ -204,7 +232,7 @@
 				
 				$requete = "insert into ".$this->table." values (".$chaineTab.");";
 				
-				echo $requete;
+				//echo $requete;
 				
 				$select = $this->pdo->prepare ($requete);
 				//execution de la requete
@@ -230,7 +258,7 @@
 				
 				$requete = "delete from ".$this->table." where ".$chaine.";";
 				
-				echo $requete;
+				//echo $requete;
 				
 				$select = $this->pdo->prepare ($requete);
 				//execution de la requete avec les donnees des variables PDO
@@ -243,7 +271,8 @@
 			
 			if ($this->pdo !=null) //appel de la fonction conn
 			{
-				$requete = "select * from personne where pseudo='".$pseudo."' and mdp ='".$mdp."';";
+				$donnees = array(":pseudo"=>$pseudo,":mdp"=>$mdp);
+				$requete = "select * from personne where pseudo= :pseudo and mdp = :mdp;";
 				//preparation de la requete
 					$select = $this->pdo->prepare ($requete);
 					//execution de la requete
@@ -296,13 +325,14 @@
 		{
 			if ($this->pdo !=null) //appel de la fonction conn
 			{
+				$donnees = array(":idP"=>$idP);
 				$requete = "select d.idC numero, prod.libelle produit, nbDemande nombre from personne p, commande c, demande d, produit prod
-				where p.idP = c.idP and c.idC = d.idC and d.idProd = prod.idprod and p.idP = ".$idP.";";
-				//preparation de la requete
+				where p.idP = c.idP and c.idC = d.idC and d.idProd = prod.idprod and p.idP = :idP;";
+				
 					$select = $this->pdo->prepare ($requete);
-					//execution de la requete
-					$select->execute ();
-					//extraction des enregistrements
+					
+					$select->execute ($donnees);
+					
 					return $select->fetchALL();
 			}
 			else
@@ -339,12 +369,13 @@
 		{
 			if ($this->pdo !=null) //appel de la fonction conn
 			{
+				$donnees = array(":idProd"=>$idProd);
 				$requete = "select s.ids stock, prod.idprod produit, nbdispo from stock s, stockage st, produit prod
-							where s.ids=st.ids and st.idprod=prod.idprod and nbdispo=(select max(nbdispo) from stockage where idprod = ".$idProd.");";
+							where s.ids=st.ids and st.idprod=prod.idprod and nbdispo=(select max(nbdispo) from stockage where idprod = :idProd);";
 				//preparation de la requete
 					$select = $this->pdo->prepare ($requete);
 					//execution de la requete
-					$select->execute ();
+					$select->execute ($donnees);
 					//extraction des enregistrements
 					return $select->fetchALL();
 			}
@@ -357,11 +388,12 @@
 		{
 			if ($this->pdo !=null) //appel de la fonction conn
 			{
-				$requete = "update stockage set nbdispo = nbdispo - ".$nb." where ids = ".$idS." and idprod = ".$idProd.";";
+				$donnees = array(":idS"=>$idS,":idProd"=>$idProd,":nb"=>$nb);
+				$requete = "update stockage set nbdispo = nbdispo - :nb where ids = :idS and idprod = :idProd;";
 				//preparation de la requete
 					$select = $this->pdo->prepare ($requete);
 					//execution de la requete
-					$select->execute ();
+					$select->execute ($donnees);
 					//extraction des enregistrements
 					return $select->fetchALL();
 			}
@@ -375,7 +407,9 @@
 		{
 			if ($this->pdo !=null) //appel de la fonction conn
 			{
-				$requete = "update stockage set nbdispo = nbdispo + ".$Nbdon." where idprod = ".$idprod." and ids = ".$ids.";";
+				$donnees = array(":Nbdon"=>$Nbdon,":idprod"=>$idprod,":ids"=>$ids);
+				
+				$requete = "update stockage set nbdispo = nbdispo + :Nbdon where idprod = :idprod and ids = :ids;";
 				//preparation de la requete
 					$select = $this->pdo->prepare ($requete);
 					//execution de la requete
@@ -393,12 +427,13 @@
 		{
 			if ($this->pdo !=null) //appel de la fonction conn
 			{
+				$donnees = array(":idP"=>$idP);
 				$requete = "select p.idp, donation.iddon numero, nbdonne nb, prod.libelle produit from donation, don, produit prod, personne p
-							where donation.iddon=don.iddon and don.idprod=prod.idprod and donation.idp=p.idp and p.idp= ".$idP.";";
+							where donation.iddon=don.iddon and don.idprod=prod.idprod and donation.idp=p.idp and p.idp= :idP;";
 				//preparation de la requete
 					$select = $this->pdo->prepare ($requete);
 					//execution de la requete
-					$select->execute ();
+					$select->execute ($donnees);
 					//extraction des enregistrements
 					return $select->fetchALL();
 			}
@@ -418,6 +453,48 @@
 					$select = $this->pdo->prepare ($requete);
 					//execution de la requete
 					$select->execute ();
+					//extraction des enregistrements
+					return $select->fetchALL();
+			}
+			else
+			{
+				return null;
+			}
+		}
+		
+		public function updateStockageUp($idS, $idProd, $nbDispo)
+		{
+			if ($this->pdo !=null) //appel de la fonction conn
+			{
+				$donnees = array(":idS"=>$idS,":idProd"=>$idProd,":nbDispo"=>$nbDispo);
+				$requete = "update stockage set nbdispo = nbdispo + :nbDispo where idS = :idS or idprod = :idProd;";
+				//echo $requete;
+				
+				//preparation de la requete
+					$select = $this->pdo->prepare ($requete);
+					//execution de la requete
+					$select->execute ($donnees);
+					//extraction des enregistrements
+					return $select->fetchALL();
+			}
+			else
+			{
+				return null;
+			}
+		}
+		
+		public function updateStockageDown($idS, $idProd, $nbDispo)
+		{
+			if ($this->pdo !=null) //appel de la fonction conn
+			{
+				$donnees = array(":idS"=>$idS,":idProd"=>$idProd,":nbDispo"=>$nbDispo);
+				$requete = "update stockage set nbdispo = nbdispo - :nbDispo where idS = :idS or idprod = :idProd;";
+				//echo $requete;
+				
+				//preparation de la requete
+					$select = $this->pdo->prepare ($requete);
+					//execution de la requete
+					$select->execute ($donnees);
 					//extraction des enregistrements
 					return $select->fetchALL();
 			}

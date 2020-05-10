@@ -1,5 +1,4 @@
-<html>
-<body>
+
 
 <bR>
 <bR>
@@ -18,6 +17,7 @@
 				<form method="post" action="">
 					Produit : <br>
 				<table>
+				<!--
 					<tr>
 						<td>Masque de protection</td>		<td><input type="radio" name="Produit" value="1"></td>
 					</tr>
@@ -30,9 +30,21 @@
 					<tr>
 						<td>Combinaison de sécurité</td>	<td><input type="radio" name="Produit" value="4"></td>
 					</tr>
+					
+					-->
+					
+					<select name="Produit">
+					<option value = "1">masque</option>
+					<option value = "2">gant</option>
+					<option value = "3">gel</option>
+					<option value = "4">combinaison</option>
+					</select>
+					
+					
 				</table>
 	                
-	               
+	            description :
+	            <input type="text" name="description" class="form-control input-sm chat-input"  />
 	               
 	               
 	            </br>
@@ -54,8 +66,7 @@
 	    </div>
 	</div>
 	
-</body>
-</html>
+
 
 <?php
 
@@ -98,7 +109,7 @@ if (isset ($_POST["Commander"]))
 	*/
 	
 	$unControleur->setTable("Commande");
-		$tab = array("idP"=>$_SESSION['idP']);
+		$tab = array("idP"=>$_SESSION['idP'],"description"=>$_POST['description'],"datec"=>date('Y-m-d'));
 		$unControleur->insert($tab);
 
 		$IdC = $unControleur->selectMaxidC();
@@ -106,8 +117,10 @@ if (isset ($_POST["Commander"]))
 		//echo $IdC;
 		
 		$unControleur->insertDemande($_POST['Produit'], $IdC, $_POST["Nbdemande"]);
-
+		
+		
 
 }
+
 
 ?>

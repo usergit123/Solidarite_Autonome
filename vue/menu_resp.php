@@ -11,6 +11,6 @@
 	<li><a href="index_resp.php?page=2">voir les Commandes</a></li>
 	<li><a href="index_resp.php?page=3">Voir les dons</a></li>
 	
-	<li><a href="index_resp.php?page=10">Déconnexion</a></li>
+	
 </ul>
 <br>

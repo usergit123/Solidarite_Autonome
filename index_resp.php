@@ -147,9 +147,12 @@
 				{
 					case 1 :
 						echo "Page stock";
+						
+						include("vue/gestion_stock.php");
 						//appel de la fonction select*from objets
-						$lesLignes = $unControleur->selectALLStock();
+						$lesLignes = $unControleur->selectStockResp($_SESSION['idResp']);
 						//var_dump($lesLignes);
+						echo "<br><br><strong>Voici vos stocks</strong> <br><br>";
 						include("vue/vue_lister_stock.php");
 						break;
 		
@@ -165,9 +168,11 @@
 					
 					case 3:
 						echo "Page des dons";
-						include("vue/formulaire_don.php");
+						include("vue/form_don_resp.php");
 						
 						$lesLignes = $unControleur->selectALLDon();
+						echo "<strong>Vos dons</strong>";
+						
 						include("vue/tableau_don.php");
 					break;
 					

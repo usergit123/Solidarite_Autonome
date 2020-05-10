@@ -265,6 +265,9 @@ N° déclaration CNIL : 1522193</br></br>";
 						echo "Page des dons";
 						include("vue/formulaire_don.php");
 						$lesLignes = $unControleur->selectDon($_SESSION['idP']);
+						
+						echo "<strong>Vos dons</strong>";
+						
 						include("vue/tableau_don.php");
 					break;
 					

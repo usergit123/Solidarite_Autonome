@@ -18,6 +18,8 @@
 				<form method="post" action="">
 					Produit : <br>
 				<table>
+				
+				<!--
 					<tr>
 						<td>Gants de securite</td>		<td><input type="radio" name="Produit" value="1"></td>
 					</tr>
@@ -30,6 +32,16 @@
 					<tr>
 						<td>Masque de protection</td>	<td><input type="radio" name="Produit" value="4"></td>
 					</tr>
+					
+				-->
+					
+					<select name="Produit">
+					<option value = "1">masque</option>
+					<option value = "2">gant</option>
+					<option value = "3">gel</option>
+					<option value = "4">combinaison</option>
+					</select>
+					
 				</table>
 	                
 	               
@@ -53,6 +65,7 @@
 	    </div>
 	    </div>
 	</div>
+	</div>
 	
 </body>
 </html>
@@ -61,35 +74,32 @@
 
 if (isset ($_POST["Donner"]))
 {
-	$tab = $unControleur->selectMaxDispo($_POST['Produit']);
-	
-	//var_dump($tab);
-	
-	//echo $tab[0]['stock'];
-	//echo $tab[0]['produit'];
-	//echo $tab[0]['nbdispo'];
-	
-	$nbDispo = $tab[0]['nbdispo'];
-	$idS = $tab[0]['stock']; 
-	$idProd = $tab[0]['produit'];
-	
-	//echo $idProd;
-	//echo $idS;
 	
 	
-	$unControleur->updateStock($_POST['Nbdon'], $idProd, $idS);
 	
 	echo "<br><br>merci pour votre générosité !<br><br>";
 	
 	$unControleur->setTable("donation");
-	$tab = array("idP"=>$_SESSION['idP']);
+	$tab = array("idP"=>$_SESSION['idP'], "description"=>"une decription", "dated"=>date('Y-m-d'));
 	$unControleur->insert($tab);
-
-	$IdDon = $unControleur->selectMaxidDon();
-	$IdDon = $IdDon[0][0];
-	//echo $IdC;
 	
-	$unControleur->insertDonne($_POST['Produit'], $IdDon, $_POST["Nbdon"]);
+	
+	$idDon = $unControleur->selectMaxIdDon();
+	$idDon = $idDon[0][0];
+	
+	//var_dump($idDon);
+	
+	
+	$unControleur->setTable("don");
+	$tab = array("idProd"=>$_POST['Produit'] ,"idDon"=>$idDon, "nbDonnee"=>$_POST['Nbdon']);
+	$unControleur->insertRelation($tab);
+	
+
+	
+
+	
+	
+	
 
 }
 
